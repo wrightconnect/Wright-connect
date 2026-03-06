@@ -1,369 +1,497 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wright Connect</title>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    *{
+      box-sizing:border-box;
+    }
 
-<title>Wright Connect</title>
+    html{
+      scroll-behavior:smooth;
+    }
 
-<style>
+    body{
+      margin:0;
+      font-family:Arial, Helvetica, sans-serif;
+      background:#020617;
+      color:white;
+      text-align:center;
+      overflow-x:hidden;
+      position:relative;
+    }
 
-*{
-box-sizing:border-box;
-}
+    .background{
+      position:fixed;
+      inset:0;
+      z-index:-3;
+      background:
+        radial-gradient(circle at top, rgba(34,211,238,0.12), transparent 30%),
+        linear-gradient(180deg,#01040b,#020617,#06111f);
+      overflow:hidden;
+    }
 
-html{
-scroll-behavior:smooth;
-}
+    .background::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(90deg,rgba(34,211,238,0.06) 1px,transparent 1px),
+        linear-gradient(rgba(34,211,238,0.06) 1px,transparent 1px);
+      background-size:40px 40px;
+      opacity:0.15;
+    }
 
-body{
-margin:0;
-font-family:Arial, Helvetica, sans-serif;
-background:#020617;
-color:white;
-text-align:center;
-overflow-x:hidden;
-position:relative;
-}
+    .cable{
+      position:absolute;
+      height:6px;
+      border-radius:999px;
+      background:linear-gradient(90deg,transparent,#22d3ee,#67e8f9,transparent);
+      box-shadow:0 0 12px rgba(34,211,238,0.6);
+      animation:moveCable linear infinite;
+      opacity:0.75;
+    }
 
-/* NAVBAR */
+    .cable::after{
+      content:"";
+      position:absolute;
+      right:-18px;
+      top:50%;
+      width:18px;
+      height:10px;
+      transform:translateY(-50%);
+      background:linear-gradient(#94a3b8,#e2e8f0);
+      border-radius:2px;
+      box-shadow:0 0 10px rgba(255,255,255,0.12);
+    }
 
-.navbar{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:18px 30px;
-background:rgba(2,6,23,0.9);
-position:sticky;
-top:0;
-z-index:10;
-border-bottom:1px solid rgba(34,211,238,0.25);
-}
+    .cable::before{
+      content:"";
+      position:absolute;
+      right:-12px;
+      top:50%;
+      transform:translateY(-50%);
+      width:8px;
+      height:14px;
+      border-radius:1px;
+      background:repeating-linear-gradient(
+        90deg,
+        #f8fafc 0 1px,
+        #94a3b8 1px 2px
+      );
+      z-index:1;
+    }
 
-.brand{
-color:#67e8f9;
-font-weight:bold;
-font-size:22px;
-}
+    .c1{width:260px;top:15%;left:-300px;animation-duration:15s;transform:rotate(8deg);}
+    .c2{width:320px;top:35%;left:-350px;animation-duration:18s;transform:rotate(-8deg);}
+    .c3{width:300px;top:60%;left:-320px;animation-duration:20s;transform:rotate(7deg);}
+    .c4{width:240px;top:80%;left:-300px;animation-duration:17s;transform:rotate(-6deg);}
 
-.nav-links a{
-color:#dbeafe;
-text-decoration:none;
-margin-left:20px;
-font-size:16px;
-}
+    @keyframes moveCable{
+      from{left:-420px;}
+      to{left:110%;}
+    }
 
-.nav-links a:hover{
-color:#22d3ee;
-}
+    .navbar{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:18px 30px;
+      background:rgba(2,6,23,0.9);
+      position:sticky;
+      top:0;
+      z-index:20;
+      border-bottom:1px solid rgba(34,211,238,0.25);
+      backdrop-filter:blur(6px);
+    }
 
-/* BACKGROUND */
+    .brand{
+      color:#67e8f9;
+      font-weight:bold;
+      font-size:22px;
+    }
 
-.background{
-position:fixed;
-inset:0;
-z-index:-2;
-background:
-radial-gradient(circle at top, rgba(34,211,238,0.12), transparent 30%),
-linear-gradient(180deg,#01040b,#020617,#06111f);
-overflow:hidden;
-}
+    .nav-links a{
+      color:#dbeafe;
+      text-decoration:none;
+      margin-left:20px;
+      font-size:16px;
+    }
 
-.background::before{
-content:"";
-position:absolute;
-inset:0;
-background:
-linear-gradient(90deg,rgba(34,211,238,0.06) 1px,transparent 1px),
-linear-gradient(rgba(34,211,238,0.06) 1px,transparent 1px);
-background-size:40px 40px;
-opacity:0.15;
-}
+    .nav-links a:hover{
+      color:#22d3ee;
+    }
 
-/* CAT6 CABLES */
+    .hero{
+      padding:90px 20px;
+      position:relative;
+    }
 
-.cable{
-position:absolute;
-height:6px;
-border-radius:999px;
-background:linear-gradient(90deg,transparent,#22d3ee,#67e8f9,transparent);
-box-shadow:0 0 12px rgba(34,211,238,0.6);
-animation:moveCable linear infinite;
-}
+    .logo-wrap{
+      position:relative;
+      display:inline-block;
+      margin-bottom:30px;
+    }
 
-.cable::after{
-content:"";
-position:absolute;
-right:-18px;
-top:50%;
-width:18px;
-height:10px;
-transform:translateY(-50%);
-background:linear-gradient(#94a3b8,#e2e8f0);
-border-radius:2px;
-}
+    .logo{
+      width:420px;
+      max-width:95%;
+      border-radius:12px;
+      box-shadow:
+        0 0 25px rgba(34,211,238,0.25),
+        0 0 60px rgba(34,211,238,0.10);
+      border:1px solid rgba(103,232,249,0.18);
+      position:relative;
+      z-index:3;
+    }
 
-.c1{width:260px;top:15%;left:-300px;animation-duration:15s;}
-.c2{width:320px;top:35%;left:-350px;animation-duration:18s;}
-.c3{width:300px;top:60%;left:-320px;animation-duration:20s;}
-.c4{width:240px;top:80%;left:-300px;animation-duration:17s;}
+    .plug-cable{
+      position:absolute;
+      top:50%;
+      left:-360px;
+      width:340px;
+      height:10px;
+      transform:translateY(-50%);
+      border-radius:999px;
+      background:linear-gradient(90deg, rgba(34,211,238,0), #22d3ee 25%, #67e8f9 60%, #22d3ee 100%);
+      box-shadow:
+        0 0 12px rgba(34,211,238,0.7),
+        0 0 24px rgba(34,211,238,0.25);
+      animation:plugIn 2.2s ease-out forwards;
+      z-index:2;
+    }
 
-@keyframes moveCable{
-from{left:-400px;}
-to{left:110%;}
-}
+    .plug-cable::before{
+      content:"";
+      position:absolute;
+      right:-14px;
+      top:50%;
+      transform:translateY(-50%);
+      width:10px;
+      height:18px;
+      border-radius:2px;
+      background:repeating-linear-gradient(
+        90deg,
+        #f8fafc 0 1px,
+        #94a3b8 1px 2px
+      );
+      z-index:2;
+      box-shadow:0 0 8px rgba(255,255,255,0.18);
+    }
 
-/* HERO */
+    .plug-cable::after{
+      content:"";
+      position:absolute;
+      right:-22px;
+      top:50%;
+      width:22px;
+      height:12px;
+      transform:translateY(-50%);
+      background:linear-gradient(180deg,#94a3b8,#e2e8f0);
+      border-radius:2px;
+      box-shadow:0 0 10px rgba(255,255,255,0.14);
+    }
 
-.hero{
-padding:90px 20px;
-}
+    .port-glow{
+      position:absolute;
+      top:50%;
+      right:-12px;
+      width:26px;
+      height:26px;
+      transform:translateY(-50%);
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(34,211,238,0.95), rgba(34,211,238,0.15), transparent 70%);
+      filter:blur(1px);
+      opacity:0;
+      animation:portGlow 2.4s ease-out forwards;
+      z-index:1;
+    }
 
-.logo{
-width:420px;
-max-width:95%;
-margin-bottom:30px;
-border-radius:12px;
-box-shadow:0 0 25px rgba(34,211,238,0.25);
-}
+    @keyframes plugIn{
+      0%{
+        left:-430px;
+        opacity:0;
+      }
+      20%{
+        opacity:1;
+      }
+      100%{
+        left:-320px;
+        opacity:1;
+      }
+    }
 
-.hero h1{
-font-size:48px;
-color:#22d3ee;
-text-shadow:0 0 12px rgba(34,211,238,0.35);
-}
+    @keyframes portGlow{
+      0%, 55%{
+        opacity:0;
+        transform:translateY(-50%) scale(0.7);
+      }
+      75%{
+        opacity:1;
+        transform:translateY(-50%) scale(1.2);
+      }
+      100%{
+        opacity:0.55;
+        transform:translateY(-50%) scale(1);
+      }
+    }
 
-.hero p{
-max-width:700px;
-margin:auto;
-font-size:20px;
-color:#dbeafe;
-margin-top:20px;
-}
+    .hero h1{
+      font-size:48px;
+      color:#22d3ee;
+      text-shadow:0 0 12px rgba(34,211,238,0.35);
+      line-height:1.2;
+      margin:0;
+    }
 
-.btn{
-display:inline-block;
-margin-top:35px;
-background:#22d3ee;
-color:#020617;
-padding:15px 35px;
-font-size:18px;
-border-radius:10px;
-text-decoration:none;
-font-weight:bold;
-box-shadow:0 0 20px rgba(34,211,238,0.35);
-}
+    .hero p{
+      max-width:700px;
+      margin:20px auto 0;
+      font-size:20px;
+      color:#dbeafe;
+      line-height:1.7;
+    }
 
-/* SECTIONS */
+    .btn{
+      display:inline-block;
+      margin-top:35px;
+      background:#22d3ee;
+      color:#020617;
+      padding:15px 35px;
+      font-size:18px;
+      border-radius:10px;
+      text-decoration:none;
+      font-weight:bold;
+      box-shadow:0 0 20px rgba(34,211,238,0.35);
+    }
 
-.section{
-padding:70px 20px;
-background:#06111f;
-}
+    .section{
+      padding:70px 20px;
+      background:#06111f;
+    }
 
-.section h2{
-font-size:34px;
-color:#22d3ee;
-margin-bottom:40px;
-}
+    .section h2{
+      font-size:34px;
+      color:#22d3ee;
+      margin-bottom:40px;
+    }
 
-.card{
-max-width:750px;
-margin:20px auto;
-background:#0b1b2b;
-padding:25px;
-border-radius:12px;
-border:1px solid rgba(34,211,238,0.25);
-}
+    .card{
+      max-width:750px;
+      margin:20px auto;
+      background:#0b1b2b;
+      padding:25px;
+      border-radius:12px;
+      border:1px solid rgba(34,211,238,0.25);
+      box-shadow:0 10px 28px rgba(0,0,0,0.20);
+    }
 
-.card h3{
-color:#67e8f9;
-font-size:24px;
-}
+    .card h3{
+      color:#67e8f9;
+      font-size:24px;
+      margin-top:0;
+    }
 
-/* PRICING */
+    .card p{
+      color:#dbeafe;
+      font-size:17px;
+      line-height:1.7;
+      margin-bottom:0;
+    }
 
-.price{
-font-size:36px;
-color:#22d3ee;
-margin:10px 0;
-}
+    .price{
+      font-size:36px;
+      color:#22d3ee;
+      margin:10px 0;
+      font-weight:bold;
+    }
 
-/* CONTACT */
+    input, textarea{
+      width:90%;
+      max-width:500px;
+      padding:12px;
+      margin:10px 0;
+      border-radius:6px;
+      border:none;
+      font-size:16px;
+    }
 
-input, textarea{
-width:90%;
-max-width:500px;
-padding:12px;
-margin:10px 0;
-border-radius:6px;
-border:none;
-font-size:16px;
-}
+    textarea{
+      height:120px;
+    }
 
-textarea{
-height:120px;
-}
+    button{
+      background:#22d3ee;
+      color:#020617;
+      padding:12px 30px;
+      border:none;
+      border-radius:8px;
+      font-size:16px;
+      cursor:pointer;
+      font-weight:bold;
+    }
 
-button{
-background:#22d3ee;
-color:#020617;
-padding:12px 30px;
-border:none;
-border-radius:8px;
-font-size:16px;
-cursor:pointer;
-}
+    footer{
+      padding:40px;
+      color:#94a3b8;
+    }
 
-footer{
-padding:40px;
-color:#94a3b8;
-}
+    @media (max-width:700px){
+      .navbar{
+        flex-direction:column;
+        gap:10px;
+      }
 
-@media (max-width:600px){
+      .nav-links a{
+        margin:0 8px;
+      }
 
-.navbar{
-flex-direction:column;
-gap:10px;
-}
+      .hero h1{
+        font-size:36px;
+      }
 
-.hero h1{
-font-size:36px;
-}
+      .hero p{
+        font-size:18px;
+      }
 
-}
+      .logo{
+        width:300px;
+      }
 
-</style>
+      .plug-cable{
+        width:220px;
+        left:-240px;
+      }
 
+      @keyframes plugIn{
+        0%{
+          left:-310px;
+          opacity:0;
+        }
+        20%{
+          opacity:1;
+        }
+        100%{
+          left:-205px;
+          opacity:1;
+        }
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<div class="background">
+  <div class="background">
+    <div class="cable c1"></div>
+    <div class="cable c2"></div>
+    <div class="cable c3"></div>
+    <div class="cable c4"></div>
+  </div>
 
-<div class="cable c1"></div>
-<div class="cable c2"></div>
-<div class="cable c3"></div>
-<div class="cable c4"></div>
+  <div class="navbar">
+    <div class="brand">Wright Connect</div>
 
-</div>
+    <div class="nav-links">
+      <a href="#home">Home</a>
+      <a href="#services">Services</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
 
-<div class="navbar">
+  <section class="hero" id="home">
+    <div class="logo-wrap">
+      <div class="plug-cable"></div>
+      <div class="port-glow"></div>
+      <img src="logo.jpg" class="logo" alt="Wright Connect Logo">
+    </div>
 
-<div class="brand">Wright Connect</div>
+    <h1>
+      Clean Websites.<br>
+      Strong Branding.<br>
+      Professional Resumes.
+    </h1>
 
-<div class="nav-links">
-<a href="#home">Home</a>
-<a href="#services">Services</a>
-<a href="#pricing">Pricing</a>
-<a href="#contact">Contact</a>
-</div>
+    <p>
+      We help entrepreneurs and professionals grow with clean websites,
+      strong branding, and professional resumes.
+    </p>
 
-</div>
+    <a href="#pricing" class="btn">View Pricing</a>
+  </section>
 
-<section class="hero" id="home">
+  <section class="section" id="services">
+    <h2>Our Services</h2>
 
-<img src="logo.jpg" class="logo">
+    <div class="card">
+      <h3>Website Design</h3>
+      <p>Modern websites built to represent your brand and attract clients.</p>
+    </div>
 
-<h1>
+    <div class="card">
+      <h3>Branding</h3>
+      <p>Professional visual branding that builds credibility and makes your business stand out.</p>
+    </div>
 
-Clean Websites.<br>
-Strong Branding.<br>
-Professional Resumes.
+    <div class="card">
+      <h3>Professional Resumes</h3>
+      <p>Clean ATS-friendly resumes that help professionals land jobs and new opportunities.</p>
+    </div>
+  </section>
 
-</h1>
+  <section class="section" id="pricing">
+    <h2>Pricing</h2>
 
-<p>
+    <div class="card">
+      <h3>Starter Website</h3>
+      <div class="price">$149</div>
+      <p>1 page website, mobile-friendly design, and basic branding.</p>
+    </div>
 
-We help entrepreneurs and professionals grow with clean websites,
-strong branding, and professional resumes.
+    <div class="card">
+      <h3>Business Website</h3>
+      <div class="price">$299</div>
+      <p>Up to 4 pages, contact form, and full brand-matched styling.</p>
+    </div>
 
-</p>
+    <div class="card">
+      <h3>Professional Package</h3>
+      <div class="price">$499</div>
+      <p>Up to 6 pages, advanced design, premium sections, and priority support.</p>
+    </div>
+  </section>
 
-<a href="#pricing" class="btn">View Pricing</a>
+  <section class="section" id="contact">
+    <h2>Contact Wright Connect</h2>
 
-</section>
+    <form name="contact" method="POST" data-netlify="true">
+      <input type="hidden" name="form-name" value="contact">
 
-<section class="section" id="services">
+      <p>
+        <input type="text" name="name" placeholder="Your Name" required>
+      </p>
 
-<h2>Our Services</h2>
+      <p>
+        <input type="email" name="email" placeholder="Your Email" required>
+      </p>
 
-<div class="card">
-<h3>Website Design</h3>
-<p>Modern websites built to represent your brand and attract clients.</p>
-</div>
+      <p>
+        <textarea name="message" placeholder="How can we help?" required></textarea>
+      </p>
 
-<div class="card">
-<h3>Branding</h3>
-<p>Professional visual branding that builds credibility.</p>
-</div>
+      <p>
+        <button type="submit">Send Message</button>
+      </p>
+    </form>
+  </section>
 
-<div class="card">
-<h3>Professional Resumes</h3>
-<p>Clean ATS-friendly resumes that help professionals land jobs.</p>
-</div>
-
-</section>
-
-<section class="section" id="pricing">
-
-<h2>Pricing</h2>
-
-<div class="card">
-<h3>Starter Website</h3>
-<div class="price">$149</div>
-<p>1 page website, mobile friendly, basic branding.</p>
-</div>
-
-<div class="card">
-<h3>Business Website</h3>
-<div class="price">$299</div>
-<p>Up to 4 pages, contact form, full branding style.</p>
-</div>
-
-<div class="card">
-<h3>Professional Package</h3>
-<div class="price">$499</div>
-<p>Up to 6 pages, advanced design, priority support.</p>
-</div>
-
-</section>
-
-<section class="section" id="contact">
-
-<h2>Contact Wright Connect</h2>
-
-<form name="contact" method="POST" data-netlify="true">
-
-<input type="hidden" name="form-name" value="contact">
-
-<p>
-<input type="text" name="name" placeholder="Your Name" required>
-</p>
-
-<p>
-<input type="email" name="email" placeholder="Your Email" required>
-</p>
-
-<p>
-<textarea name="message" placeholder="How can we help?" required></textarea>
-</p>
-
-<p>
-<button type="submit">Send Message</button>
-</p>
-
-</form>
-
-</section>
-
-<footer>
-
-© Wright Connect
-
-</footer>
+  <footer>
+    © Wright Connect
+  </footer>
 
 </body>
 </html>
