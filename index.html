@@ -1,361 +1,369 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Wright Connect</title>
 
-  <style>
-    *{
-      box-sizing:border-box;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    html{
-      scroll-behavior:smooth;
-    }
+<title>Wright Connect</title>
 
-    body{
-      margin:0;
-      font-family:Arial, Helvetica, sans-serif;
-      background:#020617;
-      color:white;
-      text-align:center;
-      overflow-x:hidden;
-      position:relative;
-    }
+<style>
 
-    .background{
-      position:fixed;
-      inset:0;
-      z-index:-3;
-      background:
-        radial-gradient(circle at top, rgba(34,211,238,0.10), transparent 28%),
-        linear-gradient(180deg,#01040b 0%, #020617 45%, #06111f 100%);
-      overflow:hidden;
-    }
+*{
+box-sizing:border-box;
+}
 
-    .background::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:
-        linear-gradient(90deg, rgba(34,211,238,0.04) 1px, transparent 1px),
-        linear-gradient(rgba(34,211,238,0.04) 1px, transparent 1px);
-      background-size:44px 44px;
-      opacity:0.12;
-    }
+html{
+scroll-behavior:smooth;
+}
 
-    .line{
-      position:absolute;
-      height:2px;
-      background:linear-gradient(90deg, transparent, rgba(34,211,238,0.75), transparent);
-      box-shadow:0 0 14px rgba(34,211,238,0.35);
-      opacity:0.45;
-      animation:floatLine linear infinite;
-      border-radius:999px;
-    }
+body{
+margin:0;
+font-family:Arial, Helvetica, sans-serif;
+background:#020617;
+color:white;
+text-align:center;
+overflow-x:hidden;
+position:relative;
+}
 
-    .l1{width:280px; top:18%; left:-320px; transform:rotate(10deg); animation-duration:18s;}
-    .l2{width:360px; top:34%; left:-400px; transform:rotate(-7deg); animation-duration:24s;}
-    .l3{width:300px; top:56%; left:-340px; transform:rotate(8deg); animation-duration:20s;}
-    .l4{width:420px; top:78%; left:-450px; transform:rotate(-6deg); animation-duration:26s;}
+/* NAVBAR */
 
-    .node{
-      position:absolute;
-      width:10px;
-      height:10px;
-      border-radius:50%;
-      background:#67e8f9;
-      box-shadow:0 0 16px rgba(103,232,249,0.65);
-      opacity:0.55;
-      animation:pulse 3s ease-in-out infinite;
-    }
+.navbar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:18px 30px;
+background:rgba(2,6,23,0.9);
+position:sticky;
+top:0;
+z-index:10;
+border-bottom:1px solid rgba(34,211,238,0.25);
+}
 
-    .n1{top:22%; left:18%;}
-    .n2{top:38%; left:76%;}
-    .n3{top:61%; left:22%;}
-    .n4{top:73%; left:70%;}
+.brand{
+color:#67e8f9;
+font-weight:bold;
+font-size:22px;
+}
 
-    @keyframes floatLine{
-      from{ left:-480px; }
-      to{ left:110%; }
-    }
+.nav-links a{
+color:#dbeafe;
+text-decoration:none;
+margin-left:20px;
+font-size:16px;
+}
 
-    @keyframes pulse{
-      0%,100%{ transform:scale(1); opacity:0.35; }
-      50%{ transform:scale(1.25); opacity:0.75; }
-    }
+.nav-links a:hover{
+color:#22d3ee;
+}
 
-    .navbar{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      padding:18px 30px;
-      background:rgba(2,6,23,0.88);
-      position:sticky;
-      top:0;
-      z-index:20;
-      border-bottom:1px solid rgba(34,211,238,0.18);
-      backdrop-filter:blur(8px);
-    }
+/* BACKGROUND */
 
-    .brand{
-      color:#67e8f9;
-      font-weight:bold;
-      font-size:22px;
-    }
+.background{
+position:fixed;
+inset:0;
+z-index:-2;
+background:
+radial-gradient(circle at top, rgba(34,211,238,0.12), transparent 30%),
+linear-gradient(180deg,#01040b,#020617,#06111f);
+overflow:hidden;
+}
 
-    .nav-links a{
-      color:#dbeafe;
-      text-decoration:none;
-      margin-left:20px;
-      font-size:16px;
-    }
+.background::before{
+content:"";
+position:absolute;
+inset:0;
+background:
+linear-gradient(90deg,rgba(34,211,238,0.06) 1px,transparent 1px),
+linear-gradient(rgba(34,211,238,0.06) 1px,transparent 1px);
+background-size:40px 40px;
+opacity:0.15;
+}
 
-    .nav-links a:hover{
-      color:#22d3ee;
-    }
+/* CAT6 CABLES */
 
-    .hero{
-      padding:90px 20px 80px;
-      position:relative;
-    }
+.cable{
+position:absolute;
+height:6px;
+border-radius:999px;
+background:linear-gradient(90deg,transparent,#22d3ee,#67e8f9,transparent);
+box-shadow:0 0 12px rgba(34,211,238,0.6);
+animation:moveCable linear infinite;
+}
 
-    .logo{
-      width:420px;
-      max-width:95%;
-      margin-bottom:30px;
-      border-radius:12px;
-      border:1px solid rgba(103,232,249,0.16);
-      box-shadow:
-        0 0 25px rgba(34,211,238,0.18),
-        0 0 70px rgba(34,211,238,0.08);
-    }
+.cable::after{
+content:"";
+position:absolute;
+right:-18px;
+top:50%;
+width:18px;
+height:10px;
+transform:translateY(-50%);
+background:linear-gradient(#94a3b8,#e2e8f0);
+border-radius:2px;
+}
 
-    .hero h1{
-      font-size:48px;
-      color:#22d3ee;
-      text-shadow:0 0 12px rgba(34,211,238,0.28);
-      line-height:1.2;
-      margin:0;
-    }
+.c1{width:260px;top:15%;left:-300px;animation-duration:15s;}
+.c2{width:320px;top:35%;left:-350px;animation-duration:18s;}
+.c3{width:300px;top:60%;left:-320px;animation-duration:20s;}
+.c4{width:240px;top:80%;left:-300px;animation-duration:17s;}
 
-    .hero p{
-      max-width:720px;
-      margin:20px auto 0;
-      font-size:20px;
-      color:#dbeafe;
-      line-height:1.7;
-    }
+@keyframes moveCable{
+from{left:-400px;}
+to{left:110%;}
+}
 
-    .btn{
-      display:inline-block;
-      margin-top:35px;
-      background:#22d3ee;
-      color:#04111d;
-      padding:15px 35px;
-      font-size:18px;
-      border-radius:10px;
-      text-decoration:none;
-      font-weight:bold;
-      box-shadow:0 0 20px rgba(34,211,238,0.25);
-    }
+/* HERO */
 
-    .section{
-      padding:70px 20px;
-      background:rgba(6,17,31,0.82);
-      backdrop-filter:blur(2px);
-    }
+.hero{
+padding:90px 20px;
+}
 
-    .section h2{
-      font-size:34px;
-      color:#22d3ee;
-      margin-bottom:40px;
-    }
+.logo{
+width:420px;
+max-width:95%;
+margin-bottom:30px;
+border-radius:12px;
+box-shadow:0 0 25px rgba(34,211,238,0.25);
+}
 
-    .card{
-      max-width:760px;
-      margin:20px auto;
-      background:#0b1b2b;
-      padding:25px;
-      border-radius:14px;
-      border:1px solid rgba(34,211,238,0.18);
-      box-shadow:0 10px 28px rgba(0,0,0,0.20);
-    }
+.hero h1{
+font-size:48px;
+color:#22d3ee;
+text-shadow:0 0 12px rgba(34,211,238,0.35);
+}
 
-    .card h3{
-      color:#67e8f9;
-      font-size:24px;
-      margin-top:0;
-    }
+.hero p{
+max-width:700px;
+margin:auto;
+font-size:20px;
+color:#dbeafe;
+margin-top:20px;
+}
 
-    .card p{
-      color:#dbeafe;
-      font-size:17px;
-      line-height:1.7;
-      margin-bottom:0;
-    }
+.btn{
+display:inline-block;
+margin-top:35px;
+background:#22d3ee;
+color:#020617;
+padding:15px 35px;
+font-size:18px;
+border-radius:10px;
+text-decoration:none;
+font-weight:bold;
+box-shadow:0 0 20px rgba(34,211,238,0.35);
+}
 
-    .price{
-      font-size:36px;
-      color:#22d3ee;
-      margin:10px 0;
-      font-weight:bold;
-    }
+/* SECTIONS */
 
-    input, textarea{
-      width:90%;
-      max-width:500px;
-      padding:12px;
-      margin:10px 0;
-      border-radius:8px;
-      border:none;
-      font-size:16px;
-    }
+.section{
+padding:70px 20px;
+background:#06111f;
+}
 
-    textarea{
-      height:120px;
-    }
+.section h2{
+font-size:34px;
+color:#22d3ee;
+margin-bottom:40px;
+}
 
-    button{
-      background:#22d3ee;
-      color:#04111d;
-      padding:12px 30px;
-      border:none;
-      border-radius:8px;
-      font-size:16px;
-      cursor:pointer;
-      font-weight:bold;
-    }
+.card{
+max-width:750px;
+margin:20px auto;
+background:#0b1b2b;
+padding:25px;
+border-radius:12px;
+border:1px solid rgba(34,211,238,0.25);
+}
 
-    footer{
-      padding:40px;
-      color:#94a3b8;
-    }
+.card h3{
+color:#67e8f9;
+font-size:24px;
+}
 
-    @media (max-width:700px){
-      .navbar{
-        flex-direction:column;
-        gap:10px;
-      }
+/* PRICING */
 
-      .nav-links a{
-        margin:0 8px;
-      }
+.price{
+font-size:36px;
+color:#22d3ee;
+margin:10px 0;
+}
 
-      .hero h1{
-        font-size:36px;
-      }
+/* CONTACT */
 
-      .hero p{
-        font-size:18px;
-      }
+input, textarea{
+width:90%;
+max-width:500px;
+padding:12px;
+margin:10px 0;
+border-radius:6px;
+border:none;
+font-size:16px;
+}
 
-      .logo{
-        width:300px;
-      }
-    }
-  </style>
+textarea{
+height:120px;
+}
+
+button{
+background:#22d3ee;
+color:#020617;
+padding:12px 30px;
+border:none;
+border-radius:8px;
+font-size:16px;
+cursor:pointer;
+}
+
+footer{
+padding:40px;
+color:#94a3b8;
+}
+
+@media (max-width:600px){
+
+.navbar{
+flex-direction:column;
+gap:10px;
+}
+
+.hero h1{
+font-size:36px;
+}
+
+}
+
+</style>
+
 </head>
 
 <body>
 
-  <div class="background">
-    <div class="line l1"></div>
-    <div class="line l2"></div>
-    <div class="line l3"></div>
-    <div class="line l4"></div>
+<div class="background">
 
-    <div class="node n1"></div>
-    <div class="node n2"></div>
-    <div class="node n3"></div>
-    <div class="node n4"></div>
-  </div>
+<div class="cable c1"></div>
+<div class="cable c2"></div>
+<div class="cable c3"></div>
+<div class="cable c4"></div>
 
-  <div class="navbar">
-    <div class="brand">Wright Connect</div>
-    <div class="nav-links">
-      <a href="#home">Home</a>
-      <a href="#services">Services</a>
-      <a href="#pricing">Pricing</a>
-      <a href="#contact">Contact</a>
-    </div>
-  </div>
+</div>
 
-  <section class="hero" id="home">
-    <img src="logo.jpg" class="logo" alt="Wright Connect Logo">
+<div class="navbar">
 
-    <h1>
-      Clean Websites.<br>
-      Strong Branding.<br>
-      Professional Resumes.
-    </h1>
+<div class="brand">Wright Connect</div>
 
-    <p>
-      We help entrepreneurs and professionals grow with clean websites,
-      strong branding, and professional resumes.
-    </p>
+<div class="nav-links">
+<a href="#home">Home</a>
+<a href="#services">Services</a>
+<a href="#pricing">Pricing</a>
+<a href="#contact">Contact</a>
+</div>
 
-    <a href="#pricing" class="btn">View Pricing</a>
-  </section>
+</div>
 
-  <section class="section" id="services">
-    <h2>Our Services</h2>
+<section class="hero" id="home">
 
-    <div class="card">
-      <h3>Website Design</h3>
-      <p>Modern websites built to represent your brand and attract clients.</p>
-    </div>
+<img src="logo.jpg" class="logo">
 
-    <div class="card">
-      <h3>Branding</h3>
-      <p>Professional visual branding that builds credibility and makes your business stand out.</p>
-    </div>
+<h1>
 
-    <div class="card">
-      <h3>Professional Resumes</h3>
-      <p>Clean ATS-friendly resumes that help professionals land jobs and new opportunities.</p>
-    </div>
-  </section>
+Clean Websites.<br>
+Strong Branding.<br>
+Professional Resumes.
 
-  <section class="section" id="pricing">
-    <h2>Pricing</h2>
+</h1>
 
-    <div class="card">
-      <h3>Starter Website</h3>
-      <div class="price">$149</div>
-      <p>1 page website, mobile-friendly design, and basic branding.</p>
-    </div>
+<p>
 
-    <div class="card">
-      <h3>Business Website</h3>
-      <div class="price">$299</div>
-      <p>Up to 4 pages, contact form, and full brand-matched styling.</p>
-    </div>
+We help entrepreneurs and professionals grow with clean websites,
+strong branding, and professional resumes.
 
-    <div class="card">
-      <h3>Professional Package</h3>
-      <div class="price">$499</div>
-      <p>Up to 6 pages, advanced design, premium sections, and priority support.</p>
-    </div>
-  </section>
+</p>
 
-  <section class="section" id="contact">
-    <h2>Contact Wright Connect</h2>
+<a href="#pricing" class="btn">View Pricing</a>
 
-    <form name="contact" method="POST" data-netlify="true">
-      <input type="hidden" name="form-name" value="contact">
+</section>
 
-      <p><input type="text" name="name" placeholder="Your Name" required></p>
-      <p><input type="email" name="email" placeholder="Your Email" required></p>
-      <p><textarea name="message" placeholder="How can we help?" required></textarea></p>
-      <p><button type="submit">Send Message</button></p>
-    </form>
-  </section>
+<section class="section" id="services">
 
-  <footer>
-    © Wright Connect
-  </footer>
+<h2>Our Services</h2>
+
+<div class="card">
+<h3>Website Design</h3>
+<p>Modern websites built to represent your brand and attract clients.</p>
+</div>
+
+<div class="card">
+<h3>Branding</h3>
+<p>Professional visual branding that builds credibility.</p>
+</div>
+
+<div class="card">
+<h3>Professional Resumes</h3>
+<p>Clean ATS-friendly resumes that help professionals land jobs.</p>
+</div>
+
+</section>
+
+<section class="section" id="pricing">
+
+<h2>Pricing</h2>
+
+<div class="card">
+<h3>Starter Website</h3>
+<div class="price">$149</div>
+<p>1 page website, mobile friendly, basic branding.</p>
+</div>
+
+<div class="card">
+<h3>Business Website</h3>
+<div class="price">$299</div>
+<p>Up to 4 pages, contact form, full branding style.</p>
+</div>
+
+<div class="card">
+<h3>Professional Package</h3>
+<div class="price">$499</div>
+<p>Up to 6 pages, advanced design, priority support.</p>
+</div>
+
+</section>
+
+<section class="section" id="contact">
+
+<h2>Contact Wright Connect</h2>
+
+<form name="contact" method="POST" data-netlify="true">
+
+<input type="hidden" name="form-name" value="contact">
+
+<p>
+<input type="text" name="name" placeholder="Your Name" required>
+</p>
+
+<p>
+<input type="email" name="email" placeholder="Your Email" required>
+</p>
+
+<p>
+<textarea name="message" placeholder="How can we help?" required></textarea>
+</p>
+
+<p>
+<button type="submit">Send Message</button>
+</p>
+
+</form>
+
+</section>
+
+<footer>
+
+© Wright Connect
+
+</footer>
 
 </body>
 </html>
