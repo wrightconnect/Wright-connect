@@ -1,0 +1,9 @@
+<header style="display:flex;justify-content:space-between;align-items:center;padding:20px;">
+<h2 style="color:#22c55e;">Wright Connect</h2>
+
+<nav>
+<a href="#" style="color:white;margin:10px;">Home</a>
+<a href="#" style="color:white;margin:10px;">Services</a>
+<a href="#" style="color:white;margin:10px;">Contact</a>
+</nav>
+</header>
