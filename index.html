@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <title>Wright Connect</title>
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
@@ -15,99 +17,187 @@ text-align:center;
 }
 
 .hero{
-padding:120px 20px;
+padding:100px 20px;
 background:#020617;
+}
+
+.logo{
+width:260px;
+max-width:80%;
+margin-bottom:30px;
+border-radius:12px;
+box-shadow:0 0 25px rgba(34,211,238,0.25);
 }
 
 .hero h1{
 font-size:48px;
+line-height:1.2;
 color:#22d3ee;
-line-height:1.3;
+text-shadow:0 0 12px rgba(34,211,238,0.35);
 }
 
 .hero p{
 max-width:700px;
 margin:auto;
-font-size:18px;
-opacity:0.8;
+font-size:20px;
+color:#dbeafe;
+margin-top:20px;
 }
 
-button{
-margin-top:30px;
+.btn{
+display:inline-block;
+margin-top:35px;
 background:#22d3ee;
 color:#020617;
-padding:14px 30px;
+padding:15px 35px;
 font-size:18px;
-border:none;
-border-radius:8px;
-cursor:pointer;
+border-radius:10px;
+text-decoration:none;
+font-weight:bold;
+box-shadow:0 0 20px rgba(34,211,238,0.35);
 }
 
 .services{
-padding:60px 20px;
-background:#0f172a;
+padding:70px 20px;
+background:#06111f;
+}
+
+.services h2{
+font-size:34px;
+color:#22d3ee;
+margin-bottom:40px;
 }
 
 .service{
-max-width:700px;
+max-width:750px;
 margin:20px auto;
-background:#1e293b;
+background:#0b1b2b;
 padding:25px;
-border-radius:10px;
+border-radius:12px;
+border:1px solid rgba(34,211,238,0.25);
 }
 
-footer{
-padding:50px 20px;
+.service h3{
+color:#67e8f9;
+font-size:24px;
+}
+
+.service p{
+color:#dbeafe;
+font-size:17px;
+}
+
+.contact{
+padding:70px 20px;
+background:#020617;
+}
+
+.contact h2{
+color:#22d3ee;
+font-size:30px;
+}
+
+.contact p{
+color:#dbeafe;
+font-size:18px;
+}
+
+@media (max-width:600px){
+
+.hero h1{
+font-size:38px;
+}
+
+.hero p{
+font-size:18px;
+}
+
 }
 
 </style>
+
 </head>
 
 <body>
 
 <section class="hero">
 
+<img src="logo.jpg" class="logo">
+
 <h1>
+
 Clean Websites.<br>
 Strong Branding.<br>
 Professional Resumes.
+
 </h1>
 
 <p>
+
 We help entrepreneurs and professionals grow with clean websites,
 strong branding, and professional resumes.
+
 </p>
 
-<button>Get Started</button>
+<a href="#contact" class="btn">Get Started</a>
 
 </section>
 
 <section class="services">
 
+<h2>Our Services</h2>
+
 <div class="service">
-<h2>Website Design</h2>
-<p>Modern websites built to represent your brand and attract clients.</p>
+
+<h3>Website Design</h3>
+
+<p>
+
+Modern websites designed to represent your brand
+and attract new clients.
+
+</p>
+
 </div>
 
 <div class="service">
-<h2>Branding</h2>
-<p>Strong visual branding that builds credibility and makes your business stand out.</p>
+
+<h3>Branding</h3>
+
+<p>
+
+Strong visual branding that builds credibility
+and makes your business stand out.
+
+</p>
+
 </div>
 
 <div class="service">
-<h2>Professional Resumes</h2>
-<p>Clean ATS-friendly resumes that help professionals land new opportunities.</p>
+
+<h3>Professional Resumes</h3>
+
+<p>
+
+Clean ATS-friendly resumes that help professionals
+land new opportunities.
+
+</p>
+
 </div>
 
 </section>
 
-<footer>
+<section class="contact" id="contact">
 
 <h2>Contact Wright Connect</h2>
+
 <p>Email: wrightconnect@email.com</p>
+
 <p>We respond within 24 hours.</p>
 
-</footer>
+</section>
 
 </body>
+
 </html>
