@@ -8,6 +8,10 @@
 
 <title>Wright Connect</title>
 
+<meta name="description" content="Wright Connect provides website design, branding, and professional resume services to help businesses and professionals grow online.">
+<meta name="keywords" content="website design, branding, resume services, digital services, Wright Connect">
+<meta name="author" content="Wright Connect">
+
 <style>
 
 *{
@@ -20,12 +24,10 @@ scroll-behavior:smooth;
 
 body{
 margin:0;
-font-family:Arial, Helvetica, sans-serif;
+font-family:Arial;
 background:#020617;
 color:white;
 text-align:center;
-overflow-x:hidden;
-position:relative;
 }
 
 /* NAVBAR */
@@ -35,125 +37,59 @@ display:flex;
 justify-content:space-between;
 align-items:center;
 padding:18px 30px;
-background:rgba(2,6,23,0.9);
-position:sticky;
-top:0;
-z-index:10;
-border-bottom:1px solid rgba(34,211,238,0.25);
+background:#020617;
+border-bottom:1px solid rgba(34,211,238,0.2);
 }
 
 .brand{
-color:#67e8f9;
-font-weight:bold;
+color:#22d3ee;
 font-size:22px;
+font-weight:bold;
 }
 
 .nav-links a{
-color:#dbeafe;
-text-decoration:none;
+color:white;
 margin-left:20px;
-font-size:16px;
+text-decoration:none;
 }
 
 .nav-links a:hover{
 color:#22d3ee;
 }
 
-/* BACKGROUND */
-
-.background{
-position:fixed;
-inset:0;
-z-index:-2;
-background:
-radial-gradient(circle at top, rgba(34,211,238,0.12), transparent 30%),
-linear-gradient(180deg,#01040b,#020617,#06111f);
-overflow:hidden;
-}
-
-.background::before{
-content:"";
-position:absolute;
-inset:0;
-background:
-linear-gradient(90deg,rgba(34,211,238,0.06) 1px,transparent 1px),
-linear-gradient(rgba(34,211,238,0.06) 1px,transparent 1px);
-background-size:40px 40px;
-opacity:0.15;
-}
-
-/* CAT6 CABLES */
-
-.cable{
-position:absolute;
-height:6px;
-border-radius:999px;
-background:linear-gradient(90deg,transparent,#22d3ee,#67e8f9,transparent);
-box-shadow:0 0 12px rgba(34,211,238,0.6);
-animation:moveCable linear infinite;
-}
-
-.cable::after{
-content:"";
-position:absolute;
-right:-18px;
-top:50%;
-width:18px;
-height:10px;
-transform:translateY(-50%);
-background:linear-gradient(#94a3b8,#e2e8f0);
-border-radius:2px;
-}
-
-.c1{width:260px;top:15%;left:-300px;animation-duration:15s;}
-.c2{width:320px;top:35%;left:-350px;animation-duration:18s;}
-.c3{width:300px;top:60%;left:-320px;animation-duration:20s;}
-.c4{width:240px;top:80%;left:-300px;animation-duration:17s;}
-
-@keyframes moveCable{
-from{left:-400px;}
-to{left:110%;}
-}
-
 /* HERO */
 
 .hero{
-padding:90px 20px;
+padding:80px 20px;
 }
 
 .logo{
 width:420px;
-max-width:95%;
+max-width:90%;
 margin-bottom:30px;
-border-radius:12px;
-box-shadow:0 0 25px rgba(34,211,238,0.25);
 }
 
 .hero h1{
 font-size:48px;
 color:#22d3ee;
-text-shadow:0 0 12px rgba(34,211,238,0.35);
 }
 
 .hero p{
+font-size:20px;
 max-width:700px;
 margin:auto;
-font-size:20px;
-color:#dbeafe;
 margin-top:20px;
 }
 
 .btn{
 display:inline-block;
-margin-top:35px;
+margin-top:30px;
 background:#22d3ee;
-color:#020617;
+color:black;
 padding:15px 35px;
-font-size:18px;
-border-radius:10px;
+border-radius:8px;
 text-decoration:none;
 font-weight:bold;
-box-shadow:0 0 20px rgba(34,211,238,0.35);
 }
 
 /* SECTIONS */
@@ -164,23 +100,20 @@ background:#06111f;
 }
 
 .section h2{
-font-size:34px;
 color:#22d3ee;
-margin-bottom:40px;
+font-size:34px;
 }
 
 .card{
 max-width:750px;
-margin:20px auto;
+margin:25px auto;
 background:#0b1b2b;
 padding:25px;
-border-radius:12px;
-border:1px solid rgba(34,211,238,0.25);
+border-radius:10px;
 }
 
 .card h3{
-color:#67e8f9;
-font-size:24px;
+color:#22d3ee;
 }
 
 /* PRICING */
@@ -197,10 +130,9 @@ input, textarea{
 width:90%;
 max-width:500px;
 padding:12px;
-margin:10px 0;
+margin:10px;
 border-radius:6px;
 border:none;
-font-size:16px;
 }
 
 textarea{
@@ -209,30 +141,15 @@ height:120px;
 
 button{
 background:#22d3ee;
-color:#020617;
 padding:12px 30px;
 border:none;
-border-radius:8px;
-font-size:16px;
-cursor:pointer;
+border-radius:6px;
+font-weight:bold;
 }
 
 footer{
 padding:40px;
-color:#94a3b8;
-}
-
-@media (max-width:600px){
-
-.navbar{
-flex-direction:column;
-gap:10px;
-}
-
-.hero h1{
-font-size:36px;
-}
-
+color:#aaa;
 }
 
 </style>
@@ -240,15 +157,6 @@ font-size:36px;
 </head>
 
 <body>
-
-<div class="background">
-
-<div class="cable c1"></div>
-<div class="cable c2"></div>
-<div class="cable c3"></div>
-<div class="cable c4"></div>
-
-</div>
 
 <div class="navbar">
 
@@ -307,6 +215,47 @@ strong branding, and professional resumes.
 
 </section>
 
+<section class="section">
+
+<h2>About Wright Connect</h2>
+
+<div class="card">
+
+<p>
+Wright Connect helps entrepreneurs and professionals build a strong digital presence.
+We focus on clean design, strong branding, and professional presentation that helps
+businesses stand out online.
+</p>
+
+<p>
+Our mission is simple: connect people with the tools they need to grow.
+</p>
+
+</div>
+
+</section>
+
+<section class="section">
+
+<h2>Why Choose Wright Connect</h2>
+
+<div class="card">
+<h3>Modern Design</h3>
+<p>Clean and modern websites that represent your brand professionally.</p>
+</div>
+
+<div class="card">
+<h3>Business Focused</h3>
+<p>Every design is built to help you attract customers and grow.</p>
+</div>
+
+<div class="card">
+<h3>Reliable Service</h3>
+<p>Fast communication and quality work you can depend on.</p>
+</div>
+
+</section>
+
 <section class="section" id="pricing">
 
 <h2>Pricing</h2>
@@ -314,7 +263,7 @@ strong branding, and professional resumes.
 <div class="card">
 <h3>Starter Website</h3>
 <div class="price">$149</div>
-<p>1 page website, mobile friendly, basic branding.</p>
+<p>1 page website, mobile friendly design, basic branding.</p>
 </div>
 
 <div class="card">
@@ -326,7 +275,7 @@ strong branding, and professional resumes.
 <div class="card">
 <h3>Professional Package</h3>
 <div class="price">$499</div>
-<p>Up to 6 pages, advanced design, priority support.</p>
+<p>Up to 6 pages, advanced design and priority support.</p>
 </div>
 
 </section>
@@ -356,6 +305,16 @@ strong branding, and professional resumes.
 </p>
 
 </form>
+
+</section>
+
+<section class="section">
+
+<h2>Ready to Build Your Brand?</h2>
+
+<p>Start your project with Wright Connect today.</p>
+
+<a href="#contact" class="btn">Start Now</a>
 
 </section>
 
