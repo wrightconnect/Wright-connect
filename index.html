@@ -1,203 +1,321 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wright Connect</title>
+  <style>
+    *{
+      box-sizing:border-box;
+    }
 
-<title>Wright Connect</title>
+    html{
+      scroll-behavior:smooth;
+    }
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    body{
+      margin:0;
+      font-family:Arial, Helvetica, sans-serif;
+      background:#020617;
+      color:white;
+      text-align:center;
+      overflow-x:hidden;
+      position:relative;
+    }
 
-<style>
+    .background{
+      position:fixed;
+      inset:0;
+      z-index:-2;
+      background:
+        radial-gradient(circle at top, rgba(34,211,238,0.10), transparent 30%),
+        linear-gradient(180deg, #01040b 0%, #020617 45%, #06111f 100%);
+      overflow:hidden;
+    }
 
-body{
-margin:0;
-font-family:Arial, Helvetica, sans-serif;
-background:#020617;
-color:white;
-text-align:center;
-}
+    .background::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(90deg, rgba(34,211,238,0.06) 1px, transparent 1px),
+        linear-gradient(rgba(34,211,238,0.06) 1px, transparent 1px);
+      background-size:42px 42px;
+      opacity:0.15;
+    }
 
-.hero{
-padding:100px 20px;
-background:#020617;
-}
+    .cable{
+      position:absolute;
+      height:6px;
+      border-radius:999px;
+      background:linear-gradient(90deg, rgba(34,211,238,0), #22d3ee, #67e8f9, rgba(34,211,238,0));
+      box-shadow:0 0 12px rgba(34,211,238,0.5);
+      opacity:0.7;
+      animation:floatCable linear infinite;
+    }
 
-.logo{
-width:260px;
-max-width:80%;
-margin-bottom:30px;
-border-radius:12px;
-box-shadow:0 0 25px rgba(34,211,238,0.25);
-}
+    .cable::after{
+      content:"";
+      position:absolute;
+      right:-18px;
+      top:50%;
+      width:18px;
+      height:10px;
+      transform:translateY(-50%);
+      border-radius:2px;
+      background:linear-gradient(180deg, #94a3b8, #e2e8f0);
+      box-shadow:0 0 10px rgba(255,255,255,0.15);
+    }
 
-.hero h1{
-font-size:48px;
-line-height:1.2;
-color:#22d3ee;
-text-shadow:0 0 12px rgba(34,211,238,0.35);
-}
+    .cable::before{
+      content:"";
+      position:absolute;
+      right:-12px;
+      top:50%;
+      transform:translateY(-50%);
+      width:8px;
+      height:14px;
+      background:repeating-linear-gradient(
+        90deg,
+        #f8fafc 0 1px,
+        #94a3b8 1px 2px
+      );
+      border-radius:1px;
+      z-index:1;
+    }
 
-.hero p{
-max-width:700px;
-margin:auto;
-font-size:20px;
-color:#dbeafe;
-margin-top:20px;
-}
+    .c1{ width:220px; top:12%; left:-260px; animation-duration:14s; animation-delay:0s; transform:rotate(12deg); }
+    .c2{ width:300px; top:28%; left:-340px; animation-duration:18s; animation-delay:2s; transform:rotate(-8deg); }
+    .c3{ width:260px; top:46%; left:-300px; animation-duration:16s; animation-delay:5s; transform:rotate(7deg); }
+    .c4{ width:340px; top:64%; left:-380px; animation-duration:20s; animation-delay:1s; transform:rotate(-10deg); }
+    .c5{ width:240px; top:82%; left:-280px; animation-duration:17s; animation-delay:4s; transform:rotate(9deg); }
 
-.btn{
-display:inline-block;
-margin-top:35px;
-background:#22d3ee;
-color:#020617;
-padding:15px 35px;
-font-size:18px;
-border-radius:10px;
-text-decoration:none;
-font-weight:bold;
-box-shadow:0 0 20px rgba(34,211,238,0.35);
-}
+    @keyframes floatCable{
+      from{
+        left:-420px;
+      }
+      to{
+        left:110%;
+      }
+    }
 
-.services{
-padding:70px 20px;
-background:#06111f;
-}
+    .hero{
+      padding:90px 20px 80px;
+      position:relative;
+    }
 
-.services h2{
-font-size:34px;
-color:#22d3ee;
-margin-bottom:40px;
-}
+    .logo{
+      width:260px;
+      max-width:80%;
+      margin-bottom:30px;
+      border-radius:12px;
+      box-shadow:0 0 25px rgba(34,211,238,0.25);
+      border:1px solid rgba(103,232,249,0.16);
+    }
 
-.service{
-max-width:750px;
-margin:20px auto;
-background:#0b1b2b;
-padding:25px;
-border-radius:12px;
-border:1px solid rgba(34,211,238,0.25);
-}
+    .hero h1{
+      font-size:48px;
+      line-height:1.2;
+      color:#22d3ee;
+      text-shadow:0 0 12px rgba(34,211,238,0.35);
+      margin-bottom:20px;
+    }
 
-.service h3{
-color:#67e8f9;
-font-size:24px;
-}
+    .hero p{
+      max-width:700px;
+      margin:auto;
+      font-size:20px;
+      color:#dbeafe;
+      margin-top:20px;
+      line-height:1.7;
+    }
 
-.service p{
-color:#dbeafe;
-font-size:17px;
-}
+    .btn{
+      display:inline-block;
+      margin-top:35px;
+      background:#22d3ee;
+      color:#020617;
+      padding:15px 35px;
+      font-size:18px;
+      border-radius:10px;
+      text-decoration:none;
+      font-weight:bold;
+      box-shadow:0 0 20px rgba(34,211,238,0.35);
+    }
 
-.contact{
-padding:70px 20px;
-background:#020617;
-}
+    .services{
+      padding:70px 20px;
+      background:rgba(6,17,31,0.88);
+      backdrop-filter:blur(3px);
+    }
 
-.contact h2{
-color:#22d3ee;
-font-size:30px;
-}
+    .services h2{
+      font-size:34px;
+      color:#22d3ee;
+      margin-bottom:40px;
+    }
 
-.contact p{
-color:#dbeafe;
-font-size:18px;
-}
+    .service{
+      max-width:750px;
+      margin:20px auto;
+      background:#0b1b2b;
+      padding:25px;
+      border-radius:12px;
+      border:1px solid rgba(34,211,238,0.25);
+      box-shadow:0 10px 28px rgba(0,0,0,0.20);
+    }
 
-@media (max-width:600px){
+    .service h3{
+      color:#67e8f9;
+      font-size:24px;
+      margin-top:0;
+    }
 
-.hero h1{
-font-size:38px;
-}
+    .service p{
+      color:#dbeafe;
+      font-size:17px;
+      line-height:1.7;
+      margin-bottom:0;
+    }
 
-.hero p{
-font-size:18px;
-}
+    .contact{
+      padding:70px 20px;
+      background:rgba(2,6,23,0.92);
+    }
 
-}
+    .contact h2{
+      color:#22d3ee;
+      font-size:30px;
+    }
 
-</style>
+    input, textarea{
+      width:90%;
+      max-width:500px;
+      padding:12px;
+      margin:10px 0;
+      border-radius:6px;
+      border:none;
+      font-size:16px;
+    }
 
+    textarea{
+      height:120px;
+    }
+
+    button{
+      background:#22d3ee;
+      color:#020617;
+      padding:12px 30px;
+      border:none;
+      border-radius:8px;
+      font-size:16px;
+      cursor:pointer;
+      font-weight:bold;
+    }
+
+    footer{
+      padding:40px;
+      color:#94a3b8;
+    }
+
+    @media (max-width:600px){
+      .hero h1{
+        font-size:38px;
+      }
+
+      .hero p{
+        font-size:18px;
+      }
+
+      .logo{
+        width:220px;
+      }
+
+      .cable{
+        opacity:0.45;
+      }
+    }
+  </style>
 </head>
-
 <body>
 
-<section class="hero">
+  <div class="background">
+    <div class="cable c1"></div>
+    <div class="cable c2"></div>
+    <div class="cable c3"></div>
+    <div class="cable c4"></div>
+    <div class="cable c5"></div>
+  </div>
 
-<img src="logo.jpg" class="logo">
+  <section class="hero">
+    <img src="logo.jpg" class="logo" alt="Wright Connect Logo">
 
-<h1>
+    <h1>
+      Clean Websites.<br>
+      Strong Branding.<br>
+      Professional Resumes.
+    </h1>
 
-Clean Websites.<br>
-Strong Branding.<br>
-Professional Resumes.
+    <p>
+      We help entrepreneurs and professionals grow with clean websites,
+      strong branding, and professional resumes.
+    </p>
 
-</h1>
+    <a href="#contact" class="btn">Get Started</a>
+  </section>
 
-<p>
+  <section class="services">
+    <h2>Our Services</h2>
 
-We help entrepreneurs and professionals grow with clean websites,
-strong branding, and professional resumes.
+    <div class="service">
+      <h3>Website Design</h3>
+      <p>
+        Modern websites designed to represent your brand and attract new clients.
+      </p>
+    </div>
 
-</p>
+    <div class="service">
+      <h3>Branding</h3>
+      <p>
+        Strong visual branding that builds credibility and makes your business stand out.
+      </p>
+    </div>
 
-<a href="#contact" class="btn">Get Started</a>
+    <div class="service">
+      <h3>Professional Resumes</h3>
+      <p>
+        Clean ATS-friendly resumes that help professionals land new opportunities.
+      </p>
+    </div>
+  </section>
 
-</section>
+  <section class="contact" id="contact">
+    <h2>Contact Wright Connect</h2>
 
-<section class="services">
+    <form name="contact" method="POST" data-netlify="true">
+      <input type="hidden" name="form-name" value="contact">
 
-<h2>Our Services</h2>
+      <p>
+        <input type="text" name="name" placeholder="Your Name" required>
+      </p>
 
-<div class="service">
+      <p>
+        <input type="email" name="email" placeholder="Your Email" required>
+      </p>
 
-<h3>Website Design</h3>
+      <p>
+        <textarea name="message" placeholder="How can we help?" required></textarea>
+      </p>
 
-<p>
+      <p>
+        <button type="submit">Send Message</button>
+      </p>
+    </form>
+  </section>
 
-Modern websites designed to represent your brand
-and attract new clients.
-
-</p>
-
-</div>
-
-<div class="service">
-
-<h3>Branding</h3>
-
-<p>
-
-Strong visual branding that builds credibility
-and makes your business stand out.
-
-</p>
-
-</div>
-
-<div class="service">
-
-<h3>Professional Resumes</h3>
-
-<p>
-
-Clean ATS-friendly resumes that help professionals
-land new opportunities.
-
-</p>
-
-</div>
-
-</section>
-
-<section class="contact" id="contact">
-
-<h2>Contact Wright Connect</h2>
-
-<p>Email: wrightconnect@email.com</p>
-
-<p>We respond within 24 hours.</p>
-
-</section>
+  <footer>
+    © Wright Connect
+  </footer>
 
 </body>
-
 </html>
